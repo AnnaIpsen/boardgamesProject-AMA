@@ -6,8 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./styles/main.css">
+    <script src="scripts/lightsOut.js" defer></script>
 </head>
 <body>
-    
+<header>
+    <h1>Board games project</h1>
+    <nav>
+        <ul>
+            <li><a href="lightsOut.html">Lights Out</a></li>
+            <li><a href="4inRow.html">4 in row</a></li>
+            <li><a href="hangman.html">Hangman</a></li>
+            <li><a href="memorygame.html">Memory game</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section class="game-container">
+        <h2 class="game__title">Lights Out</h2>
+        <p id="gameTime">Time:</p>
+        <p id="gameScore">Attempts:</p>
+        <div id="gameGrid" class="game-grid"></div>
+    </section>
+</main>
 </body>
 </html>
