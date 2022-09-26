@@ -1,3 +1,4 @@
+//create buttons
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
 't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å'];
@@ -15,5 +16,8 @@ function createButtons(){
         buttons.appendChild(letters);
         letters.appendChild(list);
     }
-}
-createButtons()
+};
+createButtons();
+
+
+const words = ['pasta', 'masseødelæggelsesvåben', 'danmark', 'webudvikling', 'verdensmesterskab', 'brød']; 
