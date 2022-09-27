@@ -1,5 +1,5 @@
 #alphabet {
-    margin: 3rem auto;
+    margin: 1rem auto;
     padding: 0;
     max-width: 900px;
     display: flex;
@@ -22,4 +22,16 @@
     background: white;
     border: solid 1px hotpink;
     color: hotpink;
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  #hangman {
+    height: 20rem;
+    width: 20rem;
+    border: 1px solid hotpink;
   }

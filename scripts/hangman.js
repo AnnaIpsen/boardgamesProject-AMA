@@ -19,5 +19,12 @@ function createButtons(){
 };
 createButtons();
 
-
+//generate word
 const words = ['pasta', 'masseødelæggelsesvåben', 'danmark', 'webudvikling', 'verdensmesterskab', 'brød']; 
+
+
+
+//hangman
+
+
+//save score
