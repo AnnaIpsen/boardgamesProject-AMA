@@ -22,7 +22,7 @@ function createButtons(){
 createButtons();
 
 //generate word and counter
-const wordsArray = ['pasta', 'brandbil', 'danmark', 'webudvikling', 'verdensmesterskab', 'antifrost', 'skuffe', 
+const wordsArray = ['pasta', 'brandbil', 'danmark', 'webudvikling', 'antifrost', 'skuffe', 
 'irritation', 'kampsport', 'tusindben', 'spredning']; 
 const randomWord = wordsArray[(Math.floor(Math.random() * wordsArray.length))];
 let wordDisplay = []
@@ -98,7 +98,7 @@ function clickFunction () {
 //hangman
 function hangman() {
     let hangman = document.getElementById('hangmanImg')
-    hangman.setAttribute("src", `../hangman/${lives}.png`)
+    hangman.setAttribute("src", `./hangman/${lives}.png`)
 }
 
 //show topscore
@@ -110,6 +110,7 @@ function showTopscore () {
             <p>Fejl: ${ocalStorage.getItem('name')}</p>`
     }
 }
+showTopscore()
 
 //save score
 function saveScore () {
@@ -121,4 +122,5 @@ function saveScore () {
         localStorage.setItem('fejl', mistakes)
         localStorage.setItem('forsøg', counter)
     }
+    showTopscore()
 }
