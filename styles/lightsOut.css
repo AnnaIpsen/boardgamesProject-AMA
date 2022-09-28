@@ -1,9 +1,63 @@
-.game-grid {
-    width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&display=swap');
+
+body, button {
+    font-family: Karla, sans-serif;
+}
+
+button {
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    color: white;
+}
+
+.game-start-button {
+    margin-bottom: 1em;
+    background-color: #7EBC89;
+}
+
+.game-start-button:hover {
+    background-color: #94C79D;
+}
+
+.cheat-button {
+    margin-top: 2em;
+    background-color: #D65C91;
+}
+
+.cheat-button:hover {
+    background-color: #DA6C9C;
+}
+
+.game {
+    margin: 2rem;
+
+}
+
+.game__title {
+    font-size: 1.5rem;
+    padding: 0.5em 0;
+}
+
+.game__wrapper {
+    display: flex;
+    gap: 1em;
+}
+
+#gameScore {
+    font-weight: 600;
+    padding: 0.5em 0;
+}
+
+
+.game__grid {
     display: grid;
     justify-content: center;
     justify-items: center;
     grid-template-columns: repeat(5, 100px);
+    border: 2px solid peachpuff;
+    width: fit-content;
 }
 
 .game-grid__tile {
@@ -13,9 +67,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid peachpuff;
+    border: 2px solid peachpuff;
 }
 
-.active {
-    background-color: yellow;
+.game-grid__tile:hover {
+    border: 2px solid red;
+}
+
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.leaderboard-list h3 {
+    font-size: 1em;
+}
+
+.leaderboard-list li {
+    padding: 0.5em 0;
+}
+
+.lightOn {
+    background-image: url(../bulbs/bulbOn.png);
+    animation: flip 1s linear;
+}
+
+
+
+.lightOff {
+    background-image: url(../bulbs/bulbOff.png);
+    animation: flip 1s linear;
+}
+
+@keyframes flip {
+    from {
+        transform: rotateY(180deg);
+    }
+    to {
+        transform: rotateY(0);
+    }
 }

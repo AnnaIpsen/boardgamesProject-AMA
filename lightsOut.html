@@ -22,11 +22,23 @@
     </nav>
 </header>
 <main>
-    <section class="game-container">
+    <section class="game">
         <h2 class="game__title">Lights Out</h2>
-        <p id="gameTime">Time:</p>
-        <p id="gameScore">Attempts:</p>
-        <div id="gameGrid" class="game-grid"></div>
+        <button class="game-start-button button" id="game__start-btn">New game</button>
+        <p id="gameResult"></p>
+        <p id="gameScore">Attempts: 0</p>
+        <div class="game__wrapper">
+            <div>
+        <div id="gameGrid" class="game__grid">
+
+            </div>
+            <button class="button cheat-button" id="cheatBtn">I'm tired of this, just win this game!</button>
+        </div>
+        <div id="leaderBoard" class="leaderboard">
+            <h3>Top players:</h3>
+            <ul class="leaderboard-list" id="leaderboardList"></ul>
+        </div>
+        </div>
     </section>
 </main>
 </body>

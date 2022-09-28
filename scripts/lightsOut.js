@@ -1,17 +1,21 @@
-const gameTime = document.getElementById("gameTime")
+const gameResult = document.getElementById("gameResult")
 const gameScore = document.getElementById("gameScore")
 const gameGrid = document.getElementById("gameGrid")
+const gameStartBtn = document.getElementById("game__start-btn")
+const cheatButton = document.getElementById("cheatBtn")
+const leaderboardList = document.getElementById("leaderboardList")
 
-let tileChosen = null
 gridSize = 25
 startingLights = 3
+let attempts = 0
 
-const gridElements = []
+let tilesParameters = []
+let tilesHTMLElements = null
 
 
+//Helper function to determine position of the tiles
 let x = 0
 let y = 1
-//Helper function to determine position of the tiles
 const handlePosition = (index) => {
     if (index % 5 || index === 0) {
         x++
@@ -21,15 +25,16 @@ const handlePosition = (index) => {
     }
 }
 
+
 const renderNewGame = () => {
+    //Generate game tiles and assign default parameters
     for (let i = 0; i < (gridSize); i++) {
         const newTile = document.createElement('div')
-        newTile.innerHTML = "hi"
         newTile.classList.add("game-grid__tile")
         newTile.setAttribute('data-index', String(i))
         gameGrid.appendChild(newTile)
         handlePosition(i)
-        gridElements.push({
+        tilesParameters.push({
             position: {
                 x: x ,
                 y: y
@@ -38,43 +43,60 @@ const renderNewGame = () => {
             lightOn: false,
         })
     }
-
+    //Add listeners to tiles
+    handleTileClickLogic()
+    //Assign random tiles to be lightOn on setup
+    chooseRandomTilesOnSetup()
+    //Render tile classes based on the lightOn state
+    renderLight()
+    renderLeaderboardData()
 }
 
+gameStartBtn.addEventListener("click", () => {
+    window.location.reload()
+})
 
 
 
-renderNewGame()
+const handleTileClickLogic = () => {
+    tilesHTMLElements = Array.from(document.getElementsByClassName("game-grid__tile"))
+    tilesHTMLElements.forEach((tile, tileIndex) => tile.addEventListener("click", (event) => {
+            const tileObject = tilesParameters.find(tile => tile.tileIndex === tileIndex)
+            tile.classList.remove("lightOff")
+            tile.classList.add("lightOn")
+            tileObject.lightOn = !tileObject.lightOn
+            checkAdjacentTiles(tileObject.tileIndex)
+            renderLight()
+            addAttempt()
+        })
+    )
+}
 
-const allTiles = Array.from(document.getElementsByClassName("game-grid__tile"))
-
-allTiles.forEach((tile, tileIndex) => tile.addEventListener("click", (event) => {
-    const tileObject = gridElements.find(tile => tile.tileIndex === tileIndex)
-    tile.classList.toggle("active")
-    tileObject.lightOn = !tileObject.lightOn
-    checkAdjacentTiles(tile, tileObject, tileObject.tileIndex)
-    renderLight()
-    })
-)
-
-const checkAdjacentTiles = (tileChosen, tileObject, tileIndex) => {
-    const topTile = gridElements.find(topTile => topTile.position.x === gridElements[tileIndex].position.x && (topTile.position.y - gridElements[tileIndex].position.y === -1))
-    const rightTile = gridElements.find(rightTile => rightTile.position.y === gridElements[tileIndex].position.y && gridElements[tileIndex].position.x - rightTile.position.x === -1 )
-    const bottomTile = gridElements.find(bottomTile => bottomTile.position.x === gridElements[tileIndex].position.x && (bottomTile.position.y - gridElements[tileIndex].position.y === 1))
-    const leftTile = gridElements.find(leftTile => leftTile.position.y === gridElements[tileIndex].position.y && gridElements[tileIndex].position.x - leftTile.position.x === 1 )
+//
+const checkAdjacentTiles = (tileIndex) => {
+    const topTile = tilesParameters.find(topTile => topTile.position.x === tilesParameters[tileIndex].position.x && (topTile.position.y - tilesParameters[tileIndex].position.y === -1))
+    const rightTile = tilesParameters.find(rightTile => rightTile.position.y === tilesParameters[tileIndex].position.y && tilesParameters[tileIndex].position.x - rightTile.position.x === -1 )
+    const bottomTile = tilesParameters.find(bottomTile => bottomTile.position.x === tilesParameters[tileIndex].position.x && (bottomTile.position.y - tilesParameters[tileIndex].position.y === 1))
+    const leftTile = tilesParameters.find(leftTile => leftTile.position.y === tilesParameters[tileIndex].position.y && tilesParameters[tileIndex].position.x - leftTile.position.x === 1 )
+    // Combine all adjacent Tiles into an array and filter out falsy values
     const adjacentTiles = [topTile, rightTile, bottomTile, leftTile].filter(elementNotFalsy => elementNotFalsy)
+    // Change the state of adjacent tiles to the opposite one
     adjacentTiles.forEach(tile => {
         tile.lightOn = !tile.lightOn
     })
 }
 
+//Function to render lightOn and lightOff based on their state
 const renderLight = () => {
-    const tilesWithLight = gridElements.filter(element => element.lightOn)
-        tilesWithLight.forEach(tile => allTiles[tile.tileIndex].classList.add("active"))
-    const tilesWithoutLight = gridElements.filter(element => !element.lightOn)
-    tilesWithoutLight.forEach(tile => allTiles[tile.tileIndex].classList.remove("active"))
+    const tilesWithLight = tilesParameters.filter(element => element.lightOn)
+        tilesWithLight.forEach(tile => tilesHTMLElements[tile.tileIndex].classList.add("lightOn"))
+        tilesWithLight.forEach(tile => tilesHTMLElements[tile.tileIndex].classList.remove("lightOff"))
+    const tilesWithoutLight = tilesParameters.filter(element => !element.lightOn)
+    tilesWithoutLight.forEach(tile => tilesHTMLElements[tile.tileIndex].classList.add("lightOff"))
+    tilesWithoutLight.forEach(tile => {tilesHTMLElements[tile.tileIndex].classList.remove("lightOn")})
 }
 
+//Function assigns lightOn value to true to x Lights on setup
 const chooseRandomTilesOnSetup = () => {
     const randomIndexes = []
     for (let i = 0; i < startingLights; i++) {
@@ -84,11 +106,52 @@ const chooseRandomTilesOnSetup = () => {
         }
         generateRandomNumber()
     }
-    const randomGridElements = gridElements.filter(gridElement => randomIndexes.find(randomIndex => randomIndex === gridElement.tileIndex))
-    console.log(randomIndexes)
-    console.log(randomGridElements)
+    const randomGridElements = tilesParameters.filter(gridElement => randomIndexes.find(randomIndex => randomIndex === gridElement.tileIndex))
     randomGridElements.forEach(el => el.lightOn = !el.lightOn)
 }
 
-chooseRandomTilesOnSetup()
-renderLight()
+const addAttempt = () => {
+    attempts++
+    gameScore.innerHTML = `Attempts: ${attempts}`
+}
+
+let getLeaderboardData = JSON.parse(localStorage.getItem("leaderboard"))
+
+const checkWinCondition = () => {
+    if (tilesParameters.every(tile => !tile.lightOn)) {
+        const username = prompt("Congratulations! Winner's username:")
+        console.log(getLeaderboardData)
+        if (!getLeaderboardData) localStorage.setItem("leaderboard", JSON.stringify([{username: username, attempts: attempts}]));
+        localStorage.setItem("leaderboard", JSON.stringify([...getLeaderboardData, {username: username, attempts: attempts}]))
+        getLeaderboardData = JSON.parse(localStorage.getItem("leaderboard"))
+        renderLeaderboardData()
+    }
+    console.log(getLeaderboardData)
+}
+
+const renderLeaderboardData = () => {
+    leaderboardList.innerHTML = ""
+    if (!getLeaderboardData) {
+        leaderboardList.innerHTML = "No data"
+    } else {
+        const top5 = getLeaderboardData.sort((a,b) => parseFloat(a.attempts) - parseFloat(b.attempts)).slice(0, 5)
+        top5.forEach((item, index) => {
+            const newListItem = document.createElement("li")
+            console.log(item)
+            console.log(typeof item)
+            newListItem.innerHTML = `${index + 1}. ${item.username} ${item.attempts} ${item.attempts === 1 ? "attempt" : "attempts"}`
+            leaderboardList.appendChild(newListItem)
+        })
+    }
+}
+
+
+cheatButton.addEventListener("click", () => {
+    tilesParameters.forEach((tile, tileIndex) => tilesParameters[tileIndex].lightOn = false)
+    renderLight()
+    checkWinCondition()
+})
+
+renderNewGame()
+
+
