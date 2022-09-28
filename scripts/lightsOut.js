@@ -120,13 +120,11 @@ let getLeaderboardData = JSON.parse(localStorage.getItem("leaderboard"))
 const checkWinCondition = () => {
     if (tilesParameters.every(tile => !tile.lightOn)) {
         const username = prompt("Congratulations! Winner's username:")
-        console.log(getLeaderboardData)
         if (!getLeaderboardData) localStorage.setItem("leaderboard", JSON.stringify([{username: username, attempts: attempts}]));
         localStorage.setItem("leaderboard", JSON.stringify([...getLeaderboardData, {username: username, attempts: attempts}]))
         getLeaderboardData = JSON.parse(localStorage.getItem("leaderboard"))
         renderLeaderboardData()
     }
-    console.log(getLeaderboardData)
 }
 
 const renderLeaderboardData = () => {
@@ -137,8 +135,6 @@ const renderLeaderboardData = () => {
         const top5 = getLeaderboardData.sort((a,b) => parseFloat(a.attempts) - parseFloat(b.attempts)).slice(0, 5)
         top5.forEach((item, index) => {
             const newListItem = document.createElement("li")
-            console.log(item)
-            console.log(typeof item)
             newListItem.innerHTML = `${index + 1}. ${item.username} ${item.attempts} ${item.attempts === 1 ? "attempt" : "attempts"}`
             leaderboardList.appendChild(newListItem)
         })
