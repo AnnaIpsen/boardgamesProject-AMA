@@ -1,3 +1,9 @@
+
+h2 {
+  color: hotpink; 
+  margin: 4rem 0;
+}
+
 #alphabet {
   margin: 2rem auto;
   padding: 0;
@@ -36,9 +42,22 @@
 .flex {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   align-items: flex-end;
-  margin: 4rem 0;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 4rem;
+  margin-right: 4rem;
 }
 
 #word {
@@ -73,4 +92,21 @@
   color: white;
   border-radius: 10px;
   margin-right: 2rem
+}
+
+#topscore {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: hotpink;
+  padding: 1rem;
+  color: white;
+  border-radius: 10px;
+  max-width: 20rem;
+}
+
+#topscore div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

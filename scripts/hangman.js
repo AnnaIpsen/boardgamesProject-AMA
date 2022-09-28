@@ -28,6 +28,8 @@ const randomWord = wordsArray[(Math.floor(Math.random() * wordsArray.length))];
 let wordDisplay = []
 var randomWordArray = randomWord.split("");
 
+console.log(randomWord);
+
 
 function generateWord(){
     for (var i = 0; i < randomWordArray.length; i++) {
@@ -104,23 +106,25 @@ function hangman() {
 //show topscore
 function showTopscore () {
     if (localStorage.getItem('fejl') && localStorage.getItem('forsøg') && localStorage.getItem('name')) {
-        document.getElementById('topscore') = `<h4>Topscore</h4>
-            <p>Navn: ${ocalStorage.getItem('name')}</p>
-            <p>Forsøg: ${ocalStorage.getItem('forsøg')}</p>
-            <p>Fejl: ${ocalStorage.getItem('name')}</p>`
+        document.getElementById('topscore').innerHTML = `<h4>Topscore</h4>
+            <div>
+                <p>Navn: ${localStorage.getItem('name')}</p>
+                <p>Forsøg: ${localStorage.getItem('forsøg')}</p>
+                <p>Fejl: ${localStorage.getItem('fejl')}</p>
+            </div>`
     }
 }
 showTopscore()
 
 //save score
 function saveScore () {
-    if (localStorage.getItem('fejl') < 10 - lives && localStorage.getItem('forsøg') > counter) {
+    let mistakes = 10-lives
+    if (localStorage.getItem('fejl') >= mistakes && localStorage.getItem('forsøg') > counter || !localStorage.getItem('fejl') && !localStorage.getItem('forsøg') && !localStorage.getItem('name')) {
         let name = prompt('Tillykke, du har vundet og har lavet en ny topscore. Indtast din navn, så vi kan gemme den')
-        let mistakes = 10-lives
 
         localStorage.setItem('name', name)
         localStorage.setItem('fejl', mistakes)
         localStorage.setItem('forsøg', counter)
-    }
+    } 
     showTopscore()
 }
