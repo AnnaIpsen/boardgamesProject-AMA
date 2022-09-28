@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+body {
+    padding: 4rem;
+}
+
+h1 {
+    color: hotpink; 
+    margin-bottom: 2rem;
+}
+
 ul {
     list-style: none;
     display: flex;
@@ -11,14 +20,31 @@ ul {
 }
 
 li {
-    padding: 1rem;
+    margin: 0 1rem 0 0;
+    padding: 1rem 0;
+
+}
+li:hover {
+    background-color: white; 
+    color: hotpink;
 }
 
 a {
-    color: black;
+    color: white;
+    padding: 1rem;
     text-decoration: none;
+    background-color: hotpink;
+    border: white 1px solid;
 }
 
 a:hover {
-    color: hotpink;
+    background-color: white;
+    border: hotpink 1px solid;
+    color: hotpink
+}
+
+#active {
+    background-color: white;
+    border: hotpink 1px solid;
+    color: hotpink
 }
