@@ -62,10 +62,15 @@
   width: 30rem;
   border: 1px solid hotpink;
 }
+#hangmanImg {
+  height: 20rem;
+  width: 30rem;
+}
 
 #lives, #counter {
   background-color: hotpink;
   padding: 1rem;
   color: white;
   border-radius: 10px;
+  margin-right: 2rem
 }

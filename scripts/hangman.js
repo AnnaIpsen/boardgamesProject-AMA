@@ -52,6 +52,7 @@ showCounter();
 
 function showLives() {
     document.getElementById('lives').innerHTML = `Du har ${lives} liv tilbage`;
+    hangman();
 };
 showLives();
 
@@ -59,16 +60,17 @@ showLives();
 function check () {
     if (JSON.stringify(wordDisplay) === JSON.stringify(randomWordArray)) {
         document.getElementById('win').innerHTML = 'tillykke du har vundet!';
+        saveScore();
     }
     else if (lives == 0) {
-        document.getElementById('win').innerHTML = 'GAME OVER!';
+        document.getElementById('win').innerHTML = 'Game over!';
     };
 }
 
 // OnClick Function
-let guessCount = 0;
 
 function clickFunction () {
+    let guessCount = 0;
     let guess = this.innerHTML;
     this.setAttribute('class', 'usedLetter');
     for (var i = 0; i < wordDisplay.length; i++) {
@@ -79,7 +81,7 @@ function clickFunction () {
         };
     };
 
-    if (guess === 0) {
+    if (guessCount === 0) {
         lives -= 1;
         counter += 1;
         guessCount = 0;
@@ -93,9 +95,30 @@ function clickFunction () {
 };
 
 
-
-
 //hangman
+function hangman() {
+    let hangman = document.getElementById('hangmanImg')
+    hangman.setAttribute("src", `../hangman/${lives}.png`)
+}
 
+//show topscore
+function showTopscore () {
+    if (localStorage.getItem('fejl') && localStorage.getItem('forsøg') && localStorage.getItem('name')) {
+        document.getElementById('topscore') = `<h4>Topscore</h4>
+            <p>Navn: ${ocalStorage.getItem('name')}</p>
+            <p>Forsøg: ${ocalStorage.getItem('forsøg')}</p>
+            <p>Fejl: ${ocalStorage.getItem('name')}</p>`
+    }
+}
 
 //save score
+function saveScore () {
+    if (localStorage.getItem('fejl') < 10 - lives && localStorage.getItem('forsøg') > counter) {
+        let name = prompt('Tillykke, du har vundet og har lavet en ny topscore. Indtast din navn, så vi kan gemme den')
+        let mistakes = 10-lives
+
+        localStorage.setItem('name', name)
+        localStorage.setItem('fejl', mistakes)
+        localStorage.setItem('forsøg', counter)
+    }
+}
