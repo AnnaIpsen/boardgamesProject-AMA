@@ -23,9 +23,16 @@
     <main>
         <h2>Hangman</h2>
         <div class="flex">
-            <p id="word"></p>
+            <div>
+                <p id="word"></p>
+                <div class="flex">
+                    <p id="lives"></p>
+                    <p id="counter"></p>
+                </div>
+            </div>
             <div id="hangman"></div>
         </div>
+        <div><h2 id="win">something</h2></div>
         <section id="buttons"></section>
     </main>
     <script src="./scripts/hangman.js"></script>
