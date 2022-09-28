@@ -112,6 +112,8 @@ function showTopscore () {
                 <p>Forsøg: ${localStorage.getItem('forsøg')}</p>
                 <p>Fejl: ${localStorage.getItem('fejl')}</p>
             </div>`
+    } else {
+        document.getElementById('topscore').innerHTML = '<h4>Topscore</h4> <p>No data</p>'
     }
 }
 showTopscore()
