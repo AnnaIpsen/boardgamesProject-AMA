@@ -1,3 +1,34 @@
 .hidden {
     
 }
+
+.show {
+
+}
+
+#grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: .5rem;
+    margin: 3rem 0;
+  }
+
+#grid div {
+    height: 4rem;
+    width: 4rem;
+    border: 1px solid hotpink;
+    cursor: pointer;
+}
+#grid div p{
+    margin: 1.5rem;
+}
+
+#message {
+    background-color: hotpink;
+    padding: 1rem;
+    color: white;
+    border-radius: 10px;
+    margin-right: 2rem;
+    text-align: center;
+}
