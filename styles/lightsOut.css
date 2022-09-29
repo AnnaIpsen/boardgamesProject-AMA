@@ -10,30 +10,21 @@ button {
     font-size: 1rem;
     border: none;
     color: white;
+    border-radius: 10px;
+    background-color: #D65C91;
+}
+button:hover {
+    background-color: #DA6C9C;
 }
 
 .game-start-button {
     margin-bottom: 1em;
-    background-color: #7EBC89;
-}
-
-.game-start-button:hover {
-    background-color: #94C79D;
 }
 
 .cheat-button {
     margin-top: 2em;
-    background-color: #D65C91;
 }
 
-.cheat-button:hover {
-    background-color: #DA6C9C;
-}
-
-.game {
-    margin: 2rem;
-
-}
 
 .game__title {
     font-size: 1.5rem;
@@ -56,22 +47,21 @@ button {
     justify-content: center;
     justify-items: center;
     grid-template-columns: repeat(5, 100px);
-    border: 2px solid peachpuff;
+    border: 2px solid hotpink;
     width: fit-content;
 }
 
 .game-grid__tile {
-    background-color: antiquewhite;
     width: 100px;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid peachpuff;
+    border: 2px solid hotpink;
 }
 
 .game-grid__tile:hover {
-    border: 2px solid red;
+    border: 3px solid hotpink;
 }
 
 .leaderboard-list {
