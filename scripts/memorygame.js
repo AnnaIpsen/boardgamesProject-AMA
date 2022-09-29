@@ -43,8 +43,8 @@ function checkMatch () {
         console.log(chosenCards)
         let number1 = document.getElementById(optionOneId).firstElementChild;
         let number2 = document.getElementById(optionTwoId).firstElementChild;
-        number1.setAttribute('class', 'hidden')
-        number2.setAttribute('class', 'hidden')
+        number1.setAttribute('id', 'hidden')
+        number2.setAttribute('id', 'hidden')
         
         console.log(number1)
         console.log(number2)
@@ -55,7 +55,7 @@ function flip() {
     let cardId = this.getAttribute('id')
     chosenCards.push(cardArray[cardId])
     let number = document.getElementById(cardId).firstElementChild;
-    number.setAttribute('class', 'show')
+    number.setAttribute('id', 'show')
 
     if (chosenCards.length == 2) {
         checkMatch()
