@@ -120,8 +120,8 @@ let getLeaderboardData = JSON.parse(localStorage.getItem("leaderboard"))
 const checkWinCondition = () => {
     if (tilesParameters.every(tile => !tile.lightOn)) {
         const username = prompt("Congratulations! Winner's username:")
-        if (!getLeaderboardData) localStorage.setItem("leaderboard", JSON.stringify([{username: username, attempts: attempts}]));
-        localStorage.setItem("leaderboard", JSON.stringify([...getLeaderboardData, {username: username, attempts: attempts}]))
+        if (!getLeaderboardData) localStorage.setItem("leaderboard", JSON.stringify([{username, attempts}]));
+        localStorage.setItem("leaderboard", JSON.stringify([...getLeaderboardData, {username, attempts}]))
         getLeaderboardData = JSON.parse(localStorage.getItem("leaderboard"))
         renderLeaderboardData()
     }
