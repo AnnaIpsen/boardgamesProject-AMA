@@ -17,7 +17,8 @@ function createBoard() {
         const card = document.createElement('div');
         card.innerHTML = `<p>${cardArray[i]}</p>`
         card.setAttribute('id', i)
-        card.setAttribute('class', 'hidden')
+        let number = card.firstElementChild;
+        number.setAttribute('class', 'hidden')
         card.addEventListener('click', flip);
         grid.appendChild(card);
     }
@@ -39,7 +40,11 @@ function checkMatch () {
 }
 
 function flip() {
-    let cardId = this.setAttribute('id')
+    let cardId = this.getAttribute('id')
     chosenCards.push(cardArray[cardId])
-    this.setAttribute('class', 'show')
+    let number = document.getElementById(cardId).firstElementChild;
+    number.setAttribute('class', 'show')
+
+    checkMatch()
+    
 }

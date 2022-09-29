@@ -1,9 +1,9 @@
 .hidden {
-    
+    display: none;
 }
 
 .show {
-
+    display: block;
 }
 
 #grid {
@@ -11,7 +11,7 @@
     flex-wrap: wrap;
     width: 100%;
     gap: .5rem;
-    margin: 3rem 0;
+    margin-top: 2rem;
   }
 
 #grid div {
@@ -29,6 +29,7 @@
     padding: 1rem;
     color: white;
     border-radius: 10px;
-    margin-right: 2rem;
+    margin-right: 1rem;
+    margin-top: 2rem;
     text-align: center;
 }
