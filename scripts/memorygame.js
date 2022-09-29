@@ -1,3 +1,10 @@
+/*
+Kilder til kode: 
+Kubow, A. (2020) Memory Game [online] available from <https://github.com/kubowania/memory-game> [29 September 2022]
+
+Der er hentet inspirtion herfra
+*/
+
 const cardArray = [];
 memoryTiles = 50
 let chosenCards = []

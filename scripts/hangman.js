@@ -1,3 +1,11 @@
+/*
+Kilder til kode: 
+Dutton, C. (2020) JavaScript Hangman Game [online] available from <https://codepen.io/cathydutton/pen/JjpxMm> [28 September 2022]
+srps8912 (2021) VANILLA JAVASCRIPT HANGMAN GAME [online] available from <https://codesandbox.io/s/z9fhk> [28 September 2022]
+
+Der er hentet inspirtion herfra
+*/
+
 //create buttons
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
