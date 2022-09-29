@@ -11,10 +11,14 @@ button {
     border: none;
     color: white;
     border-radius: 10px;
-    background-color: #D65C91;
+    background-color: hotpink;
+    border: 1px solid white;
+
 }
 button:hover {
-    background-color: #DA6C9C;
+    background-color: white;
+    border: hotpink 1px solid;
+    color: hotpink
 }
 
 .game-start-button {
