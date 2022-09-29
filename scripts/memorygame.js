@@ -20,7 +20,7 @@ function createBoard() {
         card.setAttribute('id', i)
         card.innerHTML = `<p>${cardArray[i]}</p>`
         let number = card.firstElementChild;
-        number.setAttribute('id', 'show')
+        number.setAttribute('id', 'hidden')
         card.addEventListener('click', flip);
         grid.appendChild(card);
     }
