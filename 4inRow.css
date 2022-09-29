@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.grid{
+    display: flex;
+
+}
+
+.column-styling{
+   background-color: lime;
+   width: 100px;
+   border: 1px solid whitesmoke;
+
+}
+.row-styling{
+    background-color: hotpink;
+    width: 100px;
+    height: 100px;
+    border: 1px solid whitesmoke;
+} 
+.title{
+    margin-top: 1px;
+    position: absolute;
+    top: 2px;
+    left: 28%;
+    font-size: 28px;
+    
+}
+
+
+.click_button {
+    height: 42px;
+    width: 42px;
+    border-radius: 24px;
+    background-color: rgba(255,0,0,1);
+    cursor: pointer;
+}
+
+.button:hover,
+  .btn button:hover{
+    transform: scale(0.96);
+  }
+.button.player1{
+    margin-right: 50px;
+    background-color: red;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    left: 25%;
+    top: 5px;
+    position: absolute;
+  }
+  
+.button.player2{
+    margin-left: 25px;
+    background-color: blue;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    top: 5px;
+    position: absolute;
+  }
+
+.reset {
+    color: darkblue;
+    font-size: 3vh;
+    margin: 2.5vmin;
+    padding: 2.5vmin;
+    background-color: rgba(88, 233, 93, 0.653);
+    font-weight: bold;
+  }
+
+
