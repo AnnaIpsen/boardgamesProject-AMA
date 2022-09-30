@@ -82,14 +82,14 @@ button:hover {
 }
 
 .lightOn {
-    background-image: url(../bulbs/bulbOn.png);
+    background-image: url(../assets/bulbs/bulbOn.png);
     animation: flip 1s linear;
 }
 
 
 
 .lightOff {
-    background-image: url(../bulbs/bulbOff.png);
+    background-image: url(../assets/bulbs/bulbOff.png);
     animation: flip 1s linear;
 }
 

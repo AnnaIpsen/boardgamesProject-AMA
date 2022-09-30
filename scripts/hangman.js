@@ -103,7 +103,7 @@ function clickFunction () {
 //hangman
 function hangman() {
     let hangman = document.getElementById('hangmanImg');
-    hangman.setAttribute("src", `./hangman/${lives}.png`);
+    hangman.setAttribute("src", `./assets/hangman/${lives}.png`);
 };
 
 //show topscore
