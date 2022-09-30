@@ -3,31 +3,33 @@ const resetbtn = document.querySelector("rest");
 const grid= document.getElementById("grid")
 const result = document.querySelector("result");
 const displayCurrentPlayer = document.querySelector("current-player");
-let currentPlayer = 1
+const playerTurn = document.querySelector("#player-turn");
 const cell= document.getElementsByTagName("cell");
+const reset=document.querySelector("reset");
+
+
 
 
 for( let i = 0; i < 7;i++){
     const newcolumn=document.createElement('div');
     newcolumn.classList.add("column-styling");
     newcolumn.setAttribute("columnId", i);
-    newcolumn.addEventListener("click", () => {
-        console.log("hi")
-    })
+    newcolumn.setAttribute("onClick","columnName(this)");
     grid.appendChild(newcolumn);
+   
     for( let j = 0; j <6;j++){
         const newrow=document.createElement('div');
         newrow.classList.add("row-styling");
         newrow.setAttribute("RowId", j);
         newrow.setAttribute("full", false);
+       newrow.setAttribute("brink","white");
         newcolumn.appendChild(newrow);
+        
+
 
     }
 }   
-
-function full(){
     
-}
 
 for(let i = 0;i <cell.length;i++){
     cell[i].addEventListener("click", returnCell);
@@ -37,6 +39,23 @@ for(let i = 0;i <cell.length;i++){
 function returnCell(){
     console.log("click");
 }
+
+ 
+while(!player1){
+    var player1 = prompt("Player one: Enter your name.You will be red");
+};
+
+var player1color= "red";
+
+while(!player2){
+    var player2 = prompt("Player Two: Enter your name. You will be blue");
+};
+
+var player2color= "Blue";
+
+var currentPlayer = 1;
+playerTurn.textContent = `${player1}'s turn!`;
+playerTurn.innerHTML
 
 const winningArrays = [
     [0,1,2,3],
@@ -93,7 +112,3 @@ const winningArrays = [
     [39,30,21,12],
     [30,21,12,3],
 ]
-
-
-
-
